@@ -16,12 +16,16 @@ app.use(cors());
 
 // oprq2
 app.get('/', (req, res) => {
+    res.setHeader('Content-Type', 'text/html');
     res.status(404).send("404 NOT FOUND");
+    
   });
 
 //oprq3
 app.get('/app/', (req, res) => {
+    res.setHeader('Content-Type', 'text/html');
     res.status(200).send("200 OK");
+ 
 })
 
 //oprq4
@@ -35,13 +39,28 @@ app.get('/app/rpsls/', (req, res)=> {
 })
 
 //oprq6
-app.get('/app/rps/play?parameter=shot', (req, res)=> {
-    res.send(rps(shot));
+app.get('/app/rps/play/:shot', (req, res)=> {
+    try {
+        res.send(rps(req.params.shot));
+    }
+    catch (e) {
+        if(e) {
+            res.status(404).send("Invalid shot, please try again!")
+        }
+    }
+    
 })
 
 //oprq7
-app.get('/app/rpsls/play:shot', (req, res) => {
-    res.send(rpsls(shot));
+app.get('/app/rpsls/play/:shot', (req, res) => {
+    try {
+        res.send(rpsls(req.params.shot));
+    }
+    catch (e) {
+        if(e) {
+            res.status(404).send("Invalid shot, please try again!")
+        }
+    }
 })
 
 //oprq8
