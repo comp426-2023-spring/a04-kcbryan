@@ -34,9 +34,9 @@ app.get('/app/rpsls/', (req, res)=> {
 })
 
 //oprq6
-app.get('/app/rps/play/:shot', (req, res)=> {
+app.get('/app/rps/play', (req, res)=> {
     try {
-        res.send(rps(req.params.shot));
+        res.send(rps(req.query.shot));
     }
     catch (e) {
         if(e) {
@@ -47,9 +47,9 @@ app.get('/app/rps/play/:shot', (req, res)=> {
 })
 
 //oprq7
-app.get('/app/rpsls/play/:shot', (req, res) => {
+app.get('/app/rpsls/play', (req, res) => {
     try {
-        res.send(rpsls(req.params.shot));
+        res.send(rpsls(req.query.shot));
     }
     catch (e) {
         if(e) {
